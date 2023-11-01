@@ -1,0 +1,68 @@
+body {
+  text-align: center;
+}
+
+.canvas {
+  background-color: white;
+  margin: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+/* Keyboard design classes */
+.keyboard {
+  width: 400px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column;
+  float: right; /* Move to the right */
+}
+
+/* Keyboard style */
+.keyboard {
+  padding: 2.5em 0;
+  width: 400px;
+  margin: 0 auto;
+}
+
+/* Top row for keyboard */
+.keyboardTop {
+  width: 140px;
+  margin: 0 auto;
+}
+
+/* Bottom row for keyboard */
+.keyboardBottom {
+  display: inline-flex;
+}
+
+/* Style for each Key */
+.key {
+  background-color: #353943;
+  border: 1px solid #834426;
+  box-shadow: 5px 5px #c2b7ab;
+  color: #ffffff;
+  width: 100px;
+  margin: 15px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  transition: all 0.07s ease;
+}
+/* Active Class for Key */
+.activeKey {
+  transform: scale(1.1);
+  position: relative;
+  top: 0.2em;
+  left: 0.2em;
+  box-shadow: 0 0 0 0;
+}
+/* Sets font size for each Key */
+.key > p {
+  font-size: 2em;
+}
+
+
+
