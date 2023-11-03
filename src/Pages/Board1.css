@@ -9,6 +9,9 @@ body {
   align-items: center;
 }
 
+.buttonLocations {
+  position: relative;
+}
 
 /* Keyboard design classes */
 .keyboard {
@@ -64,5 +67,55 @@ body {
   font-size: 2em;
 }
 
+/* Reset Button */
+.resetButton {
+  position: absolute;
+  margin-left: 100px;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  float: left;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
 
+.resetButton:hover {background-color: #3e8e41}
+
+.resetButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2.5px #666;
+  transform: translateY(4px);
+}
+
+/* Remove Button */
+.removeButton {
+  position: absolute;
+  margin-left: 300px;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  float: left;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+.removeButton:hover {background-color: #3e8e41}
+
+.removeButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2.5px #666;
+  transform: translateY(4px);
+}
 

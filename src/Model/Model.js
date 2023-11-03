@@ -19,12 +19,11 @@ export class Location {
 }
 
 export class ninjaSE {
-    constructor(row, column, label) {
+    constructor(row, column) {
         this.width = 200;
         this.height = 200;
         this.row = row;
         this.column = column;
-        this.label = label;
     }
 
     place(row, column) {
@@ -38,13 +37,12 @@ export class ninjaSE {
 }
 
 export class Piece {
-    constructor(color, label) {
+    constructor(color, row, column) {
         this.width = 100;
         this.height = 100;
-        this.row = 0;
-        this.column = 0;
+        this.row = row;
+        this.column = column;
         this.color = color;
-        this.label = label;
     }
 
     place(row, column) {
@@ -54,11 +52,11 @@ export class Piece {
 }
 
 export class Board {
-    constructor(rows, columns, width, height, pieces, ninjaSE) {
+    constructor(rows, columns, pieces, ninjaSE) {
         this.rows = rows;
         this.columns = columns;
-        this.width = width;
-        this.height = height;
+        this.width = this.rows * 100;
+        this.height = this.columns * 100;
         this.pieces = pieces;
         this.ninjaSE = ninjaSE;
     }
@@ -89,28 +87,20 @@ export default class Model {
     }
 
     initialize(info) {
-        let numRows = parseInt(info.board.rows);
-        let numColumns = parseInt(info.board.columns);
-        let width = parseInt(info.board.width);
-        let height = parseInt(info.board.height);
-        let ninjaSEObj = new ninjaSE(info.ninjaSE.row, info.ninjaSE.column, info.ninjaSE.label);
+        let numRows = parseInt(info.numRows);
+        let numColumns = parseInt(info.numColumns);
+        let ninjaSEObj = new ninjaSE(parseInt(info.ninjaRow) - 1, (info.ninjaColumn.charCodeAt(0) - 'A'.charCodeAt(0)));
 
         //Create the pieces for the board
         var pieces = [];
-        for (let p of info.pieces) {
-            const color = p.color || 'white';
-            pieces.push(new Piece(color, p.label));
+        for (let p of info.initial) {
+            const color = p.color;
+            const numRows = parseInt(p.row) - 1;
+            const numColumns = p.column.charCodeAt(0) - 'A'.charCodeAt(0);
+            pieces.push(new Piece(color, numRows, numColumns));
         }
 
-        //ID which pieces are shich and where they belong.
-        for (let loc of info.locations) {
-            let location = new Location(parseInt(loc.location.row), parseInt(loc.location.column));
-
-            let i = pieces.findIndex(piece => (piece.label === loc.piece));
-            pieces[i].place(location.row, location.column);
-        }
-
-        this.board = new Board(numRows, numColumns, width, height, pieces, ninjaSEObj);
+        this.board = new Board(numRows, numColumns, pieces, ninjaSEObj);
         this.numMoves = 0;
         this.score = 0;
     }
