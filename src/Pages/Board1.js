@@ -28,12 +28,10 @@ export const Board1 = () => {
 
     const moveNinjaHandler = (direction) => {
         moveNinjaSE(model, direction);
-        console.log(direction);
-        console.log(model);
-        console.log(model.board.ninjaSE);
         forceRedraw(redraw + 1);
     }
 
+/*
     function removeActiveClass(e) {
         // Removes activeKey for everything
         e.target.classList.remove("activeKey");
@@ -69,55 +67,44 @@ export const Board1 = () => {
 
 
     // Listens to users and when key is pressed calls keyDown
-    window.addEventListener("keydown", keyDown);
+    window.addEventListener("keydown", function(event) {
+        if (event.code == 'KeyA') {moveNinjaHandler(Left)}
+    });
 
-    const handleKeyUp = (e) => {
-        keyPressed = false;
-    }
+    /*
+    <div className="keyboard">
 
-    const handleKeyDown = (e) => {
-        if (keyPressed) { return ; }
-        keyDown = true;
-
-        var direction = null;
-        if ( (e.keyCode === 65) && model.available(Left) ) { direction = Left; }
-        else if ( (e.keyCode === 87) && model.available(Up) ) { direction = Up; }
-        else if ( (e.keyCode === 68) && model.available(Right) ) { direction = Right; }
-        else if ( (e.keyCode === 83) && model.available(Down) ) { direction = Down; }
-
-        //If there is a direction then we call the moveNinja Handler
-        if (direction) {
-            moveNinjaHandler(direction);
-        }
-    }
- 
+        <div className="keyboardTop">
+            <div data-key="87" className="key">
+            <p>W</p>
+            </div>
+        </div>
+        
+        <div class="keyboardBottom">
+            <div data-key="65" className="key">
+                <p>A</p>
+            </div>
+            <div data-key="83" className="key">
+                <p>S</p>
+            </div>
+            <div data-key="68" className="key">
+                <p>D</p>
+            </div>
+        </div>
+    </div>
+    */
 
     return (
         <body>
             <div className = "canvas">
                 <img id="ninjase" src={ninjase} alt="hidden" hidden></img>
-                <canvas width="520px" height="520px" ref = {canvasRef} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}></canvas>
+                <canvas width="520px" height="520px" ref = {canvasRef}></canvas>
 
-                <div className="keyboard">
+                <button className = "upButton" onClick = {(e) => moveNinjaHandler(Up)} disabled={!model.available(Up)}> &#8593; </button>
+                <button className = "leftButton" onClick = {(e) => moveNinjaHandler(Left)} disabled={!model.available(Left)}> &#8592; </button>
+                <button className = "rightButton" onClick = {(e) => moveNinjaHandler(Right)} disabled={!model.available(Right)}> &#8594; </button>
+                <button className = "downButton"onClick = {(e) => moveNinjaHandler(Down)} disabled={!model.available(Down)}> &#8595; </button>
 
-                    <div className="keyboardTop">
-                        <div data-key="87" className="key">
-                        <p>W</p>
-                        </div>
-                    </div>
-                    
-                    <div class="keyboardBottom">
-                        <div data-key="65" className="key">
-                            <p>A</p>
-                        </div>
-                        <div data-key="83" className="key">
-                            <p>S</p>
-                        </div>
-                        <div data-key="68" className="key">
-                            <p>D</p>
-                        </div>
-                    </div>
-                </div>
             </div>
            
             <div className="buttonLocations">

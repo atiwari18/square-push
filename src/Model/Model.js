@@ -1,15 +1,16 @@
 export class MoveType {
-    constructor(deltaR, deltaC, label) {
+    constructor(deltaR, deltaC) {
         this.deltaR = deltaR;
         this.deltaC = deltaC;
-        this.label = label;
     }
+
+
 }
 
-export const Up = new MoveType(-1, 0, "up");
-export const Down = new MoveType(1, 0, "down");
-export const Left = new MoveType(0, -1, "left");
-export const Right = new MoveType(0, 1, "right");
+export const Up = new MoveType(-1, 0);
+export const Down = new MoveType(1, 0);
+export const Left = new MoveType(0, -1);
+export const Right = new MoveType(0, 1);
 
 export class Location {
     constructor(row, column) {
@@ -72,7 +73,7 @@ export class Board {
 
         //Can NinjaSE move left?
         let available = false;
-        if(this.ninjaSE.column > 0) {
+        if(coord.column > 0) {
             available = true;
             if (available) {
                 moves.push(Left);
@@ -81,7 +82,7 @@ export class Board {
 
         //Can NinjaSe move right?
         available = false;
-        if((this.ninjaSE.column + 1) < (this.columns)) {
+        if((coord.column + 1) < (this.columns - 1)) {
             available = true;
             if (available) {
                 moves.push(Right);
@@ -90,7 +91,7 @@ export class Board {
 
         //Can NinjaSE move down?
         available = false;
-        if ((this.ninjaSE.row + 1) < (this.rows)) {
+        if ((coord.row + 1) < (this.rows - 1)) {
             available = true;
             if (available) {
                 moves.push(Down);
@@ -99,7 +100,7 @@ export class Board {
 
         //Can NinjaSE move up?
         available = false;
-        if (this.ninjaSE.row > 0) {
+        if (coord.row > 0) {
             available = true;
             if(available) {
                 moves.push(Up);
@@ -126,9 +127,9 @@ export default class Model {
         var pieces = [];
         for (let p of info.initial) {
             const color = p.color;
-            const numRows = parseInt(p.row) - 1;
-            const numColumns = p.column.charCodeAt(0) - 'A'.charCodeAt(0);
-            pieces.push(new Piece(color, numRows, numColumns));
+            const row = parseInt(p.row) - 1;
+            const col = p.column.charCodeAt(0) - 'A'.charCodeAt(0);
+            pieces.push(new Piece(color, row, col));
         }
 
         this.board = new Board(numRows, numColumns, pieces, ninjaSEObj);
