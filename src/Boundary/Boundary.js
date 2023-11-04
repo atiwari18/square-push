@@ -35,9 +35,8 @@ export function drawBoard(ctx, board) {
     let imageHeight = board.ninjaSE.width - 4;
     let imageX = board.ninjaSE.row * gridSize + p + 2;
     let imageY = board.ninjaSE.column * gridSize + p + 2;
-    ninjaImg.onload = () => {
-        ctx.drawImage(ninjaImg, imageX, imageY, imageWidth, imageHeight);
-    };
+    ctx.drawImage(ninjaImg, imageX, imageY, imageWidth, imageHeight);
+
 }
 
 export function redrawBoard(model, canvasObj, appObj) {

@@ -9,7 +9,7 @@ export class MoveType {
 export const Up = new MoveType(-1, 0, "up");
 export const Down = new MoveType(1, 0, "down");
 export const Left = new MoveType(0, -1, "left");
-export const Right = new MoveType(0, 1, "down");
+export const Right = new MoveType(0, 1, "right");
 
 export class Location {
     constructor(row, column) {
@@ -33,6 +33,11 @@ export class ninjaSE {
 
     location() {
         return new Location(this.row, this.column);
+    }
+
+    move(direction) {
+        this.row += direction.deltaR;
+        this.column += direction.deltaC;
     }
 }
 
@@ -61,21 +66,47 @@ export class Board {
         this.ninjaSE = ninjaSE;
     }
 
-    isBlockedIn(direction) {
-        if (direction === Left) {
-
-        }
-            //Start loop one left of ninjaSE's start
-        
-    }
-
     availableNinjaMoves() {
         let moves = [];
         let coord = this.ninjaSE.location();
 
         //Can NinjaSE move left?
         let available = false;
+        if(this.ninjaSE.column > 0) {
+            available = true;
+            if (available) {
+                moves.push(Left);
+            }
+        }
 
+        //Can NinjaSe move right?
+        available = false;
+        if((this.ninjaSE.column + 1) < (this.columns)) {
+            available = true;
+            if (available) {
+                moves.push(Right);
+            }
+        }
+
+        //Can NinjaSE move down?
+        available = false;
+        if ((this.ninjaSE.row + 1) < (this.rows)) {
+            available = true;
+            if (available) {
+                moves.push(Down);
+            }
+        }
+
+        //Can NinjaSE move up?
+        available = false;
+        if (this.ninjaSE.row > 0) {
+            available = true;
+            if(available) {
+                moves.push(Up);
+            }
+        }
+
+        return moves;
     }
 }
 
@@ -107,7 +138,6 @@ export default class Model {
 
     available(direction) {
         let allMoves = this.board.availableNinjaMoves();
-
         return allMoves.includes(direction);
     }
 
