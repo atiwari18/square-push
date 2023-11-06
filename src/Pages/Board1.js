@@ -28,71 +28,20 @@ export const Board1 = () => {
 
     const moveNinjaHandler = (direction) => {
         moveNinjaSE(model, direction);
+        console.log('Row'+ model.board.ninjaSE.row);
+        console.log('Column'+ model.board.ninjaSE.column);
+        console.log(model.board.pieces);
         forceRedraw(redraw + 1);
+        model.board.pieces.forEach((piece) => {
+            piece.isConnected(false);
+        } )
     }
 
-/*
-    function removeActiveClass(e) {
-        // Removes activeKey for everything
-        e.target.classList.remove("activeKey");
+    const resetHandler = () => {
+        let m = new Model(board1);
+        setModel(m);
     }
 
-  
-    function keyDown(event) {
-        // Assigns key "div" to key
-        const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
-
-        // Only applies activeKey to the keys WASD
-        if (
-            event.keyCode === 87 ||
-            event.keyCode === 65 ||
-            event.keyCode === 83 ||
-            event.keyCode === 68
-        ) {
-            // Adds class activeKey
-            key.classList.add("activeKey");
-
-            var direction = null;
-            if ( (event.keyCode === 65) && model.available(Left) ) { direction = Left;  moveNinjaHandler(direction);}
-            else if ( (event.keyCode === 87) && model.available(Up) ) { direction = Up;  moveNinjaHandler(direction); }
-            else if ( (event.keyCode === 68) && model.available(Right) ) { direction = Right;  moveNinjaHandler(direction);}
-            else if ( (event.keyCode === 83) && model.available(Down) ) { direction = Down;  moveNinjaHandler(direction);}
-        }
-
-        // Creates a const array of all the keys on screen
-        const keys = Array.from(document.querySelectorAll(".key"));
-        // Listens to the browser and removes activeKey when needed
-        keys.forEach(key => key.addEventListener("transitionend", removeActiveClass));
-    }
-
-
-    // Listens to users and when key is pressed calls keyDown
-    window.addEventListener("keydown", function(event) {
-        if (event.code == 'KeyA') {moveNinjaHandler(Left)}
-    });
-
-    /*
-    <div className="keyboard">
-
-        <div className="keyboardTop">
-            <div data-key="87" className="key">
-            <p>W</p>
-            </div>
-        </div>
-        
-        <div class="keyboardBottom">
-            <div data-key="65" className="key">
-                <p>A</p>
-            </div>
-            <div data-key="83" className="key">
-                <p>S</p>
-            </div>
-            <div data-key="68" className="key">
-                <p>D</p>
-            </div>
-        </div>
-    </div>
-    */
 
     return (
         <body>
@@ -108,7 +57,7 @@ export const Board1 = () => {
             </div>
            
             <div className="buttonLocations">
-                <button className="resetButton">Reset</button>
+                <button className="resetButton" onClick = {(e) => resetHandler()}>Reset</button>
                 <button className = "removeButton">Remove</button>
             </div>
         </body>

@@ -7,10 +7,15 @@ export class MoveType {
 
 }
 
-export const Up = new MoveType(-1, 0);
-export const Down = new MoveType(1, 0);
-export const Left = new MoveType(0, -1);
-export const Right = new MoveType(0, 1);
+export const Left = new MoveType(-1, 0);
+export const Right = new MoveType(1, 0);
+export const Up = new MoveType(0, -1);
+export const Down = new MoveType(0, 1);
+
+export const pieceLeft = new MoveType(0, -1);
+export const pieceRight = new MoveType(0, 1);
+export const pieceUp = new MoveType(-1, 0);
+export const pieceDown = new MoveType(1, 0);
 
 export class Location {
     constructor(row, column) {
@@ -23,8 +28,8 @@ export class ninjaSE {
     constructor(row, column) {
         this.width = 200;
         this.height = 200;
-        this.row = row;
         this.column = column;
+        this.row = row;
     }
 
     place(row, column) {
@@ -49,11 +54,41 @@ export class Piece {
         this.row = row;
         this.column = column;
         this.color = color;
+        this.isConnectedToNinja = false;
+    }
+
+    isConnected(bool) {
+        this.isConnectedToNinja = bool;
     }
 
     place(row, column) {
         this.row = row;
         this.column = column;
+    }
+
+    move(model, direction) {
+        this.row += direction.deltaR;
+        this.column += direction.deltaC;
+
+        // Check if the piece goes out of bounds to the left
+        if (this.column < 0) {
+            this.column = model.board.columns - 1; // Wrap to the rightmost column
+        }
+
+        // Check if the piece goes out of bounds to the left
+        if (this.column >= model.board.columns) {
+            this.column = 0; // Wrap to the leftmost column
+        }
+
+        // Check if the piece goes out of bounds at the top
+        if (this.row < 0) {
+            this.row = model.board.rows - 1; // Wrap to the bottom row
+        }
+
+        // Check if the piece goes out of bounds at the bottom
+        if (this.row >= model.board.rows) {
+            this.row = 0; // Wrap to the top row
+        }
     }
 }
 
@@ -73,7 +108,7 @@ export class Board {
 
         //Can NinjaSE move left?
         let available = false;
-        if(coord.column > 0) {
+        if(coord.row > 0) {
             available = true;
             if (available) {
                 moves.push(Left);
@@ -82,7 +117,7 @@ export class Board {
 
         //Can NinjaSe move right?
         available = false;
-        if((coord.column + 1) < (this.columns - 1)) {
+        if((coord.row + 1) < (this.rows - 1)) {
             available = true;
             if (available) {
                 moves.push(Right);
@@ -91,7 +126,7 @@ export class Board {
 
         //Can NinjaSE move down?
         available = false;
-        if ((coord.row + 1) < (this.rows - 1)) {
+        if ((coord.column + 1) < (this.columns - 1)) {
             available = true;
             if (available) {
                 moves.push(Down);
@@ -100,7 +135,7 @@ export class Board {
 
         //Can NinjaSE move up?
         available = false;
-        if (coord.row > 0) {
+        if (coord.column > 0) {
             available = true;
             if(available) {
                 moves.push(Up);
