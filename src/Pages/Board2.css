@@ -1,0 +1,190 @@
+bodyA {
+    text-align: center;
+}
+  
+  .canvasA {
+    background-color: white;
+    margin: 20px;
+    display: inline-flex;
+    align-items: center;
+    width: 700px;
+  }
+  
+  .buttonLocationsA {
+    position: relative;
+  }
+  
+  /* Up Button */
+  .upButtonA {
+    position: relative;
+    left: 100px;
+    top: 80px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .upButtonA:hover {background-color: #3e8e41}
+  
+  .upButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  
+  /* Left Button */
+  .leftButtonA {
+    position: relative;
+    right: 50px;
+    top: 150px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .leftButtonA:hover {background-color: #3e8e41}
+  
+  .leftButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  
+  /* Right Button */
+  .rightButtonA {
+    position: relative;
+    right: -40px;
+    top: 150px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .rightButtonA:hover {background-color: #3e8e41}
+  
+  .rightButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  
+  /* Left Button */
+  .downButtonA {
+    position: relative;
+    right: 110px;
+    top: 150px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .downButtonA:hover {background-color: #3e8e41}
+  
+  .downButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  /* Reset Button */
+  .resetButtonA {
+    position: absolute;
+    margin-left: 25px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .resetButtonA:hover {background-color: #3e8e41}
+  
+  .resetButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  
+  /* Remove Button */
+  .removeButtonA {
+    position: absolute;
+    margin-left: 200px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .removeButtonA:hover {background-color: #3e8e41}
+  
+  .removeButtonA:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(4px);
+  }
+  
+  /*Score Label*/
+  .scoreLabelA {
+    position: absolute;
+    margin-left: 450px;
+    margin-top: -300px;
+    font-size: 30px;
+  }
+  
+  /*Score Label*/
+  .moveLabelA {
+    position: absolute;
+    margin-left: 450px;
+    margin-top: -225px;
+    font-size: 30px;
+  }

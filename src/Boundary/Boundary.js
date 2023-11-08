@@ -1,3 +1,5 @@
+
+
 export function drawBoard(ctx, board) {
     let width = board.width;
     let height = board.height;
@@ -35,7 +37,11 @@ export function drawBoard(ctx, board) {
     let imageHeight = board.ninjaSE.width - 4;
     let imageX = board.ninjaSE.row * gridSize + p + 2;
     let imageY = board.ninjaSE.column * gridSize + p + 2;
+    //ninjaImg.onload = () => {
+        console.log(ninjaImg);
+        console.log(board.ninjaSE.column, board.ninjaSE.row);
         ctx.drawImage(ninjaImg, imageX, imageY, imageWidth, imageHeight);
+    //};
 }
 
 export function redrawBoard(model, canvasObj, appObj) {
@@ -44,5 +50,5 @@ export function redrawBoard(model, canvasObj, appObj) {
     //Clear the canvas
     ctx.clearRect(0, 0, canvasObj.width, canvasObj.height);
 
-    drawBoard(ctx, model.board);
+    drawBoard(ctx, model.board, model.img);
 }

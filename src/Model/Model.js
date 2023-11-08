@@ -100,6 +100,7 @@ export class Board {
         this.height = this.columns * 100;
         this.pieces = pieces;
         this.ninjaSE = ninjaSE;
+        this.img = null;
     }
 
     availableNinjaMoves() {
@@ -144,6 +145,11 @@ export class Board {
 
         return moves;
     }
+
+    remove(colors) {
+        //Remove the all the colors in this filtered array. 
+        this.pieces = this.pieces.filter(piece => !colors.includes(piece.color));
+    }
 }
 
 export default class Model {
@@ -175,6 +181,18 @@ export default class Model {
     available(direction) {
         let allMoves = this.board.availableNinjaMoves();
         return allMoves.includes(direction);
+    }
+
+    incrementScore(delta) {
+        this.score += delta;
+    }
+
+    incrementMoves(delta) {
+        this.numMoves += delta;
+    }
+
+    isVictorious() {
+        return this.board.pieces.length === 0;
     }
 
 }
