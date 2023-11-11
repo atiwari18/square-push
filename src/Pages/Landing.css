@@ -1,10 +1,15 @@
 body {
     background-color: #27272D;
 }
+
 .landingPage {
     background-color: #27272D;
     text-align: center;
     color: white;
+}
+
+.homeText {
+    margin-top: 5px;
 }
 
   

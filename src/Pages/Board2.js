@@ -47,26 +47,26 @@ export const Board2 = () => {
     }
 
     return (
-        <body>
+        <main  onLoad={(e) => resetHandler()}>
             {model.isVictorious() ? (<Navigate to="/victory"></Navigate>) : null }
                 <div className = "canvasA">
                     <img id="ninjase" src={ninjase} alt="hidden" hidden></img>
                     <canvas width="420px" height="420px" ref = {canvasRef}></canvas>
 
-                    <button className = "upButton" onClick = {(e) => moveNinjaHandler(Up)} disabled={!model.available(Up)}> &#8593; </button>
-                    <button className = "leftButton" onClick = {(e) => moveNinjaHandler(Left)} disabled={!model.available(Left)}> &#8592; </button>
-                    <button className = "rightButton" onClick = {(e) => moveNinjaHandler(Right)} disabled={!model.available(Right)}> &#8594; </button>
-                    <button className = "downButton"onClick = {(e) => moveNinjaHandler(Down)} disabled={!model.available(Down)}> &#8595; </button>
+                    <button className = "upButtonA" onClick = {(e) => moveNinjaHandler(Up)} disabled={!model.available(Up)}> &#8593; </button>
+                    <button className = "leftButtonA" onClick = {(e) => moveNinjaHandler(Left)} disabled={!model.available(Left)}> &#8592; </button>
+                    <button className = "rightButtonA" onClick = {(e) => moveNinjaHandler(Right)} disabled={!model.available(Right)}> &#8594; </button>
+                    <button className = "downButtonA"onClick = {(e) => moveNinjaHandler(Down)} disabled={!model.available(Down)}> &#8595; </button>
 
-                    <p className = "scoreLabel"> {"Score: " + model.score}</p>
-                    <label className = "moveLabel"> {"Num Moves: " + model.numMoves}</label>
+                    <p className = "scoreLabelA"> {"Score: " + model.score}</p>
+                    <label className = "moveLabelA"> {"Num Moves: " + model.numMoves}</label>
 
                 </div>
-                <div className="buttonLocations">
-                    <button className="resetButton" onClick = {(e) => resetHandler()}>Reset</button>
-                    <button className = "removeButton" onClick = {(e) => removeHandler()}>Remove</button>
+                <div className="buttonLocationsA">
+                    <button className="resetButtonA" onClick = {(e) => resetHandler()}>Reset</button>
+                    <button className = "removeButtonA" onClick = {(e) => removeHandler()}>Remove</button>
                 </div>
-        </body>
+        </main>
 
     );
 }

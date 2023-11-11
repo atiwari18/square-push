@@ -50,7 +50,7 @@ export const Board1 = () => {
     }
 
     return (
-        <body onLoad={(e) => resetHandler()}>
+        <main>
             {model.isVictorious() ? (<Navigate to="/victory"></Navigate>) : null }
                 <div className = "canvas">
                     <img id="ninjase" src={ninjase} alt="hidden" hidden></img>
@@ -70,7 +70,7 @@ export const Board1 = () => {
                     <button className="resetButton" onClick = {(e) => resetHandler()}>Reset</button>
                     <button className = "removeButton" onClick = {(e) => removeHandler()}>Remove</button>
                 </div>
-        </body>
+        </main>
 
     );
 }

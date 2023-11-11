@@ -28,8 +28,8 @@ export class ninjaSE {
     constructor(row, column) {
         this.width = 200;
         this.height = 200;
-        this.column = column;
-        this.row = row;
+        this.column = row;
+        this.row = column;
     }
 
     place(row, column) {

@@ -45,6 +45,11 @@ export function removeAll2by2(model) {
 
     //Increment score by respective multiple of 4.
     model.incrementScore(colors.length * 4);
+    
+    //Only increment moves if colors.length === 4.
+    if (colors.length !== 0) {
+        model.incrementMoves(+1);
+    }
 }
 
 
