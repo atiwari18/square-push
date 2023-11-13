@@ -3,7 +3,7 @@ import './Board3.css';
 import Model from '../Model/Model.js';
 import {config_6x6 } from '../Model/BoardConfigurations.js';
 import {redrawBoard} from '../Boundary/Boundary.js';
-import ninjase from '../ninjase.svg'
+import ninjase from '../ninja-se.svg'
 import {Up, Down, Left, Right} from '../Model/Model.js';
 import {moveNinjaSE} from '../Controller/Controller.js';
 import { removeAll2by2} from '../Controller/Controller.js';
@@ -47,7 +47,7 @@ export const Board3 = () => {
     }
 
     return (
-        <main  onLoad={(e) => resetHandler()}>
+        <main>
             {model.isVictorious() ? (<Navigate to="/victory"></Navigate>) : null }
                 <div className = "canvasB">
                     <img id="ninjase" src={ninjase} alt="hidden" hidden></img>
